@@ -110,10 +110,22 @@ void buildSerializedStatusSnapshot(TreeNode* root_node, SerializedTreeStatus& se
 void haltAllActions(TreeNode* root_node)
 {
     auto visitor = [](TreeNode* node) {
-        if (auto action = dynamic_cast<AsyncActionNode*>(node))
+        if (auto action = dynamic_cast<ActionNodeBase*>(node))
+        {
+            action->halt();
+        } else if (auto action = dynamic_cast<AsyncActionNode*>(node))
         {
             action->stopAndJoinThread();
+        } else if  (auto action = dynamic_cast<StatefulActionNode*>(node))
+        {
+            action->halt();
         }
+#ifndef BT_NO_COROUTINES
+        else if (auto action = dynamic_cast<CoroActionNode*>(node))
+        {
+            action->halt();
+        }
+#endif
     };
     applyRecursiveVisitor(root_node, visitor);
 }
