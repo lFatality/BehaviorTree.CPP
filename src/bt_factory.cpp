@@ -26,6 +26,7 @@ BehaviorTreeFactory::BehaviorTreeFactory()
     registerNodeType<ReactiveFallback>("ReactiveFallback");
 
     registerNodeType<InverterNode>("Inverter");
+    registerNodeType<KeepRunningUntilFailureNode>("KeepRunningUntilFailure");
     registerNodeType<RetryNode>("RetryUntilSuccesful");
     registerNodeType<RepeatNode>("Repeat");
     registerNodeType<TimeoutNode>("Timeout");

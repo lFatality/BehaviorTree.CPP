@@ -24,6 +24,7 @@
 #include "behaviortree_cpp_v3/action_node.h"
 #include "behaviortree_cpp_v3/condition_node.h"
 
+#include "behaviortree_cpp_v3/decorators/keep_running_until_failure_node.h"
 #include "behaviortree_cpp_v3/decorators/inverter_node.h"
 #include "behaviortree_cpp_v3/decorators/retry_node.h"
 #include "behaviortree_cpp_v3/decorators/repeat_node.h"
